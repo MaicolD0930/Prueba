@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'config/config.dart';
 import 'pages/login_page.dart';
-import 'pages/perfil_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: PerfilPage());
+    return const MaterialApp(home: LoginPage());
+    
   }
 }
 
