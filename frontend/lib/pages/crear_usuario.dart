@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../config/config.dart';
 import '../utils/validaciones.dart';
+import 'login_page.dart';
 
 class CrearUsuarioPage extends StatefulWidget {
   const CrearUsuarioPage({super.key});
@@ -70,13 +71,13 @@ class _CrearUsuarioPageState extends State<CrearUsuarioPage> {
       return false;
     }
 
-    if (telController.text.isEmpty || carreraSeleccionada == null) {
-      mostrarError("Todos los campos son obligatorios");
+    if (!validaciones.telefonoValido(telController.text)) {
+      mostrarError("El teléfono debe tener entre 8 y 14 dígitos");
       return false;
     }
 
-    if (!validaciones.telefonoValido(telController.text)) {
-      mostrarError("El teléfono debe tener entre 8 y 14 dígitos");
+    if (telController.text.isEmpty || carreraSeleccionada == null) {
+      mostrarError("Todos los campos son obligatorios");
       return false;
     }
 
@@ -121,7 +122,13 @@ class _CrearUsuarioPageState extends State<CrearUsuarioPage> {
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    Navigator.pop(context);
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
                   },
                   child: const Text("OK"),
                 ),

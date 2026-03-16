@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../config/config.dart';
-import 'package:gopoli/main.dart';
+import '../pages/crear_usuario.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -102,11 +102,7 @@ class _LoginPageState extends State<LoginPage> {
               const Text(
                 'Introduce tu correo electrónico y contraseña para iniciar sesión',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: grisTexto,
-                  height: 1.4,
-                ),
+                style: TextStyle(fontSize: 14, color: grisTexto, height: 1.4),
               ),
 
               const SizedBox(height: 36),
@@ -132,8 +128,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide:
-                        const BorderSide(color: verdePrimario, width: 2),
+                    borderSide: const BorderSide(
+                      color: verdePrimario,
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -153,9 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      verContrasena
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+                      verContrasena ? Icons.visibility_off : Icons.visibility,
                       color: grisTexto,
                     ),
                     onPressed: () =>
@@ -171,8 +167,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide:
-                        const BorderSide(color: verdePrimario, width: 2),
+                    borderSide: const BorderSide(
+                      color: verdePrimario,
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -241,7 +239,8 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => const RegisterPage()),
+                        builder: (_) => const CrearUsuarioPage(),
+                      ),
                     ),
                     child: const Text(
                       'Crear una nueva cuenta',
@@ -318,20 +317,28 @@ class _LoginPageState extends State<LoginPage> {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   style: const TextStyle(
-                      fontSize: 12, color: grisTexto, height: 1.5),
+                    fontSize: 12,
+                    color: grisTexto,
+                    height: 1.5,
+                  ),
                   children: [
                     const TextSpan(
-                        text: 'Al hacer clic en continuar, aceptas nuestros '),
+                      text: 'Al hacer clic en continuar, aceptas nuestros ',
+                    ),
                     TextSpan(
                       text: 'Términos de Servicio',
                       style: const TextStyle(
-                          color: amarillo, fontWeight: FontWeight.w600),
+                        color: amarillo,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     const TextSpan(text: ' y nuestra '),
                     TextSpan(
                       text: 'Política de Privacidad',
                       style: const TextStyle(
-                          color: amarillo, fontWeight: FontWeight.w600),
+                        color: amarillo,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),
