@@ -1,3 +1,3 @@
 class Config {
-  static const String apiUrl = "http://192.168.1.3:8080";
+  static const String apiUrl = "https://prueba-production-e1bd.up.railway.app";
 }
