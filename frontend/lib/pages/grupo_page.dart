@@ -4,6 +4,7 @@ import 'dart:convert';
 import '../config/config.dart';
 import '../utils/session_manager.dart';
 import '../pages/home_page.dart';
+import 'dart:async';
 
 class GrupoPage extends StatefulWidget {
   final int idServicio;
@@ -22,12 +23,24 @@ class _GrupoPageState extends State<GrupoPage> {
   List miembros = [];
   bool cargando = true;
   int estadoServicio = 1;
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
     _cargarMiembros();
     _cargarEstadoServicio();
+    // Refresca cada 5 segundos
+    _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+      _cargarMiembros();
+      _cargarEstadoServicio();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   Future<void> _cargarMiembros() async {
